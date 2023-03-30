@@ -3,9 +3,8 @@ const mongoose = require('mongoose')
 const RoleSchema = new mongoose.Schema({
     role:{
         type:String,
-        require:true,
-        trim:true,
-        unique:true
+        require:[true,'Role is required'],
+        trim:true
     },
     roldes:{
         type:String
