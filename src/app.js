@@ -1,11 +1,16 @@
 const express = require('express')
 const app = express()
 const config = require('../config/masterfood.db')
-const { RolRoute } = require('../routes/rol.routes')
+
+const {UserRoute} = require('../routes/user.routes')
+const { category_Route } = require('../routes/category.routes')
+const { product_Route } = require('../routes/product.routes')
 require('dotenv').config()
 
 app.use(express.json())
-app.use('/',RolRoute)
+app.use('/',UserRoute)
+app.use('/',category_Route)
+app.use('/',product_Route)
 
 const startingServer = async(PORT,URI)=>{
     try {

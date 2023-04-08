@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
-        trim:true
+        trim:true,
+        lowercase:true
     },
     phone:{
         type:String,
@@ -13,11 +14,17 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true,
         unique:true,
-        trim:true
+        trim:true,
+        lowercase:true
     },
     password:{
         type:String,
         trim:true
+    },
+    role:{
+        type:String,
+        enum:['admin','supervisor','delivery','blocked'],
+        lowercase:true
     }
 })
 
