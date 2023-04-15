@@ -14,10 +14,15 @@ app.use(express.json())
 app.use('/',UserRoute)
 app.use('/',category_Route)
 app.use('/',product_Route)
+<<<<<<< HEAD
 app.use('/',order_Route)
 
 app.get('/',(res,req)=>{
     res.send("OK")
+=======
+app.get("/",(req,res)=>{
+    res.send("hello")
+>>>>>>> edfe9fe100014ed75635709bc3d8ae1008220ae9
 })
 
 const startingServer = async(PORT,URI)=>{
