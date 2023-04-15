@@ -11,6 +11,9 @@ app.use(express.json())
 app.use('/',UserRoute)
 app.use('/',category_Route)
 app.use('/',product_Route)
+app.get("/",(req,res)=>{
+    res.send("hello")
+})
 
 const startingServer = async(PORT,URI)=>{
     try {
