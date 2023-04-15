@@ -22,3 +22,14 @@ exports.get_all_Category = async(req,res)=>{
     }
 }
 
+
+exports.delete_category = async(req,res)=>{
+    try {
+        const id = req.params.id
+        const deleteCategory = await Category.findByIdAndDelete(id)
+        if(deleteCategory.deletedCount === 0) return(res.status(404).json({message:'Category not found'}))
+        res.status(200).json({message:'Category deleted successfully'})
+    } catch (error) {
+        res.status(500).json({error:'internal server error'})
+    }
+}

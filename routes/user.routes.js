@@ -6,6 +6,7 @@ const { check_IF_admin } = require('../middlewares/checkRol.middleware')
 const { checkAuth, getUser } = require('../middlewares/auth.middlewares')
 
 UserRoute.route('/register').post(checkAuth,getUser,check_IF_admin,checkemail,userController.adduser)
-UserRoute.route('/login').post(checkemailexist,userController.login)    
+UserRoute.route('/login').post(checkemailexist,userController.login)
+UserRoute.route('/me').get(checkAuth,getUser,userController.myData)
 
 module.exports = {UserRoute};

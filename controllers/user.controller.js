@@ -32,3 +32,23 @@ exports.login = async(req,res)=>{
         res.status(500).json({error:'internal server error'})
     }
 }
+
+
+exports.get_All_delivery = async(req,res)=>{
+    try {
+        const delivery = await userModel.find({role:'delivery'})
+        res.status(200).json({delivery})
+    } catch (error) {
+        res.status(500).json({error:'internal server error'})
+    }
+}
+
+exports.myData = async(req,res)=>{
+    try {
+        const {_id,name,phone,email,role} = req.user
+        const user = {_id,name,phone,email,role}
+        res.status(200).json({user})
+    } catch (error) {
+        res.status(500).json({error:'internal server error'})
+    }
+}

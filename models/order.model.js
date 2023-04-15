@@ -12,21 +12,19 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  products: [{
-    product: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Product',
-      required: true
-    },
-    quantity: {
-      type: Number,
-      required: true
-    }
-  }],
+  product: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product',
+    required: true
+  },
+  quantity: {
+    type: Number,
+    required: true
+  },
   status: {
     type: String,
-    enum: ['pending', 'processing', 'shipped', 'delivered'],
-    default: 'pending'
+    enum: ['processing', 'shipped', 'delivered'],
+    default: 'processing'
   },
   totalPrice: {
     type: Number,
@@ -39,9 +37,13 @@ const orderSchema = new mongoose.Schema({
   deliveryPerson :{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
+  },
+  adress:{
+    type:String,
+    required:true,
   }
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const order = mongoose.model('Order', orderSchema);
 
-module.exports = Order;
+module.exports = {order};
